@@ -31,8 +31,8 @@ We believe every developer has valuable knowledge worth sharing. Our mission is 
 
 ## Connect With Us
 
-- 📝 [Blog](https://tamirdresher.github.io/content-empire/)
-- 💻 [GitHub](https://github.com/tamirdresher/content-empire)
+- 📝 [Blog](https://content-empire.netlify.app/)
+- 💻 [GitHub](https://github.com/content-empire-pub/content-empire)
 - 🐦 [Twitter/X](https://twitter.com/ContentEmpireHQ)
 
 ## Want to Contribute?

@@ -41,8 +41,8 @@ Our content is practical, honest, and free. We write about what works, call out 
 
 Topics: AI Agents · DevOps · Kubernetes · Indie Development · Content Strategy · Developer Productivity
 
-🌐 Blog: https://tamirdresher.github.io/content-empire/
-💻 GitHub: https://github.com/tamirdresher/content-empire
+🌐 Blog: https://content-empire.netlify.app/
+💻 GitHub: https://github.com/content-empire-pub/content-empire
 ```
 
 ## GitHub: tamirdresher/content-empire

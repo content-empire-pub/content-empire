@@ -4,7 +4,7 @@
 
 Content Empire is an open-source tech content publishing platform. We produce high-quality articles, hands-on courses, and practical developer resources — all freely available.
 
-🌐 **[Visit the Blog →](https://tamirdresher.github.io/content-empire/)**
+🌐 **[Visit the Blog →](https://content-empire.netlify.app/)**
 
 ---
 
@@ -64,8 +64,8 @@ We welcome contributions! Here's how:
 
 ## 📬 Connect
 
-- 🌐 [Blog](https://tamirdresher.github.io/content-empire/)
-- 💻 [GitHub](https://github.com/tamirdresher/content-empire)
+- 🌐 [Blog](https://content-empire.netlify.app/)
+- 💻 [GitHub](https://github.com/content-empire-pub/content-empire)
 - 🐦 [Twitter/X](https://twitter.com/ContentEmpireHQ)
 
 ---
