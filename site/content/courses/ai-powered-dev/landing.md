@@ -126,12 +126,18 @@ We believe the best way to learn AI development is to build real tools that solv
 
 ---
 
-<div style="text-align: center; padding: 2rem; background: #0a0a2e; color: white; border-radius: 12px; margin: 2rem 0;">
-    <h2 style="color: #00d4ff;">Ready to Get Started?</h2>
-    <p>Begin with Module 1 and work through at your own pace.</p>
-    <p><a href="module-1-landscape/" style="display: inline-block; padding: 0.75rem 1.5rem; background: #00d4ff; color: #0a0a2e; border-radius: 8px; text-decoration: none; font-weight: 600;">Start Module 1 →</a></p>
+<div style="text-align: center; padding: 2rem; background: linear-gradient(135deg, #0a0a2e 0%, #1a1a4e 100%); color: white; border-radius: 12px; margin: 2rem 0;">
+    <h2 style="color: #00d4ff;">🎯 Get the Full Course</h2>
+    <p style="font-size: 1.1rem;">All 7 modules, lifetime updates, hands-on exercises.</p>
+    <p style="font-size: 1.3rem; margin: 1rem 0;"><strong><s style="color: #888;">$19.99</s> <span style="color: #ff006e;">$9.99 Early Bird</span></strong></p>
+    <p>
+        <a href="https://gumroad.com/l/ai-powered-dev" style="display: inline-block; padding: 0.75rem 2rem; background: #ff006e; color: white; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem; margin: 0.5rem;">🛒 Buy Now — $9.99</a>
+    </p>
+    <p style="margin-top: 1rem;">
+        <a href="module-1-landscape/" style="display: inline-block; padding: 0.75rem 1.5rem; background: #00d4ff; color: #0a0a2e; border-radius: 8px; text-decoration: none; font-weight: 600;">Preview Module 1 Free →</a>
+    </p>
 </div>
 
 ---
 
-*This course is produced by the Content Empire Team and is freely available. All course materials are open source.*
+*This course is produced by the Content Empire Team. Free preview available for Module 1. Full course available on [Gumroad](https://gumroad.com/l/ai-powered-dev).*

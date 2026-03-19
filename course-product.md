@@ -121,7 +121,7 @@ A: Yes — lifetime updates. As tools evolve, so does the course.
 
 ### Purchase Links
 
-- **Gumroad:** [Coming soon]
+- **Gumroad:** [Buy Now — $9.99 Early Bird](https://gumroad.com/l/ai-powered-dev)
 - **Teachable:** [Coming soon]
 
 ---
