@@ -21,20 +21,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: 'latest'
-          extended: true
-
-      - name: Build site
-        working-directory: site
-        run: hugo --minify --baseURL "https://content-empire-pub.github.io/content-empire/"
+      - name: Prepare deploy directory
+        run: |
+          mkdir -p _site
+          cp index.html _site/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./docs
+          path: ./_site
 
   deploy:
     environment:

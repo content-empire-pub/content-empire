@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Empire — Premium Content &amp; Digital Products</title>
+  <meta name="description" content="Premium tech articles, courses, and digital products for developers. AI agents, automation, and modern development workflows.">
+  <meta name="theme-color" content="#0a0a1a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a0a1a;
+      --card: #1a1a2e;
+      --card-hover: #222240;
+      --accent: #f59e0b;
+      --accent-hover: #d97706;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --border: #2d2d4a;
+      --radius: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+    a:hover, a:focus { color: var(--accent-hover); }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 10, 26, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 10px 14px;
+      border-radius: 8px;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a:focus {
+      background: var(--card);
+      color: var(--text);
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 80px 0 60px;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .hero h1 .accent { color: var(--accent); }
+    .hero .tagline {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      min-height: 48px;
+      min-width: 48px;
+      transition: transform 0.15s, box-shadow 0.2s, background 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary {
+      background: var(--accent);
+      color: #0a0a1a;
+    }
+    .btn-primary:hover, .btn-primary:focus {
+      background: var(--accent-hover);
+      color: #0a0a1a;
+      box-shadow: 0 4px 20px rgba(245,158,11,0.3);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border: 2px solid var(--accent);
+    }
+    .btn-outline:hover, .btn-outline:focus {
+      background: rgba(245,158,11,0.1);
+      color: var(--accent);
+    }
+
+    /* SECTIONS */
+    section { padding: 60px 0; }
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 36px;
+      max-width: 600px;
+    }
+    .section-divider {
+      border: none;
+      height: 1px;
+      background: var(--border);
+      margin: 0;
+    }
+
+    /* CARD GRID */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 640px) {
+      .card-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 900px) {
+      .card-grid-3 { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: 0 8px 30px rgba(245,158,11,0.08);
+    }
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      flex: 1;
+      margin-bottom: 16px;
+    }
+    .card .card-link {
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 48px;
+    }
+    .card .card-link::after { content: ' →'; }
+    .card .tag {
+      display: inline-block;
+      background: rgba(245,158,11,0.12);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* PRODUCTS */
+    .product-highlight {
+      background: linear-gradient(135deg, var(--card) 0%, #1e1e3a 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    @media (min-width: 640px) {
+      .product-highlight { flex-direction: row; align-items: center; }
+    }
+    .product-highlight .product-info { flex: 1; }
+    .product-highlight h3 { font-size: 1.4rem; margin-bottom: 12px; }
+    .product-highlight p { color: var(--text-muted); margin-bottom: 20px; }
+    .price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .price-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: block;
+    }
+
+    /* HEBREW SECTION */
+    .hebrew-section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px;
+      text-align: center;
+    }
+    .hebrew-badge {
+      display: inline-block;
+      background: rgba(245,158,11,0.12);
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    /* SOCIAL GRID */
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    @media (min-width: 640px) {
+      .social-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (min-width: 900px) {
+      .social-grid { grid-template-columns: repeat(6, 1fr); }
+    }
+    .social-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 20px 12px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      min-height: 48px;
+      transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    }
+    .social-link:hover, .social-link:focus {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .social-link .social-icon { font-size: 1.5rem; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    footer p { margin-bottom: 8px; }
+
+    /* ANIMATIONS */
+    @media (prefers-reduced-motion: no-preference) {
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in { opacity: 1; transform: none; }
+    }
+
+    /* FOCUS STYLES */
+    a:focus-visible, .btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container nav-inner">
+    <a href="#top" class="logo">⚡ Content <span>Empire</span></a>
+    <div class="nav-links">
+      <a href="#articles">Articles</a>
+      <a href="#products">Products</a>
+      <a href="#hebrew">עברית</a>
+      <a href="#connect">Connect</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="container">
+    <h1>Content <span class="accent">Empire</span></h1>
+    <p class="tagline">Premium Content &amp; Digital Products</p>
+    <p class="tagline" style="font-size: 1rem; margin-top: -16px;">
+      Tech articles, hands-on courses, and developer tools — built by engineers who ship code every day.
+    </p>
+    <div class="hero-cta">
+      <a href="#articles" class="btn btn-primary">Read Articles</a>
+      <a href="https://tdsquad.gumroad.com" target="_blank" rel="noopener" class="btn btn-outline">Browse Products</a>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ARTICLES -->
+<section id="articles" class="container fade-in">
+  <h2 class="section-title">Latest Articles</h2>
+  <p class="section-subtitle">In-depth technical content on AI agents, automation, and modern dev workflows.</p>
+  <div class="card-grid card-grid-3">
+
+    <div class="card">
+      <span class="tag">AI Agents</span>
+      <h3>Building AI Agent Teams That Ship Code</h3>
+      <p>How to orchestrate multiple AI agents into a team that actually delivers production-ready code — from architecture to deployment.</p>
+      <a href="https://dev.to/techaiexplained/building-ai-agent-teams-that-actually-ship-code-dj5" target="_blank" rel="noopener" class="card-link">Read on Dev.to</a>
+    </div>
+
+    <div class="card">
+      <span class="tag">MCP</span>
+      <h3>MCP Servers: Plugin System AI Agents Were Missing</h3>
+      <p>MCP is doing for AI agents what USB did for hardware — one standard protocol that lets any agent use any tool.</p>
+      <a href="https://dev.to/techaiexplained/mcp-servers-the-plugin-system-ai-agents-were-missing-14a2" target="_blank" rel="noopener" class="card-link">Read on Dev.to</a>
+    </div>
+
+    <div class="card">
+      <span class="tag">Automation</span>
+      <h3>Hidden Cost of Not Automating Dev Workflow</h3>
+      <p>Manual workflows silently drain hours every week. Here's the real cost of not automating — and how to fix it.</p>
+      <a href="https://dev.to/techaiexplained/the-hidden-cost-of-not-automating-your-dev-workflow-4f43" target="_blank" rel="noopener" class="card-link">Read on Dev.to</a>
+    </div>
+
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- PRODUCTS -->
+<section id="products" class="container fade-in">
+  <h2 class="section-title">Digital Products</h2>
+  <p class="section-subtitle">Courses, templates, and tools to level up your development workflow.</p>
+  <div class="product-highlight">
+    <div class="product-info">
+      <h3>🚀 Developer Courses &amp; Resources</h3>
+      <p>Explore our full catalog of digital products — from AI-powered development courses to automation templates and productivity tools for engineers.</p>
+      <a href="https://tdsquad.gumroad.com" target="_blank" rel="noopener" class="btn btn-primary">Browse on Gumroad</a>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- HEBREW -->
+<section id="hebrew" class="container fade-in">
+  <div class="hebrew-section">
+    <span class="hebrew-badge">🇮🇱 תוכן בעברית</span>
+    <h2 class="section-title" style="text-align:center;">קורס הכנה לראיונות עבודה</h2>
+    <p style="color: var(--text-muted); max-width: 550px; margin: 0 auto 20px; direction: rtl;">
+      קורס מקיף להכנה לראיונות טכניים — כולל שאלות נפוצות, תרגול מעשי, וטיפים שיעזרו לך להצליח בראיון הבא.
+    </p>
+    <div class="price">$29.99</div>
+    <span class="price-note">One-time purchase · Lifetime access</span>
+    <div style="margin-top: 24px;">
+      <a href="https://tdsquad.gumroad.com" target="_blank" rel="noopener" class="btn btn-primary">Get the Course</a>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- CONNECT -->
+<section id="connect" class="container fade-in">
+  <h2 class="section-title">Connect With Us</h2>
+  <p class="section-subtitle">Find Content Empire across the web.</p>
+  <div class="social-grid">
+    <a href="https://dev.to/techaiexplained" target="_blank" rel="noopener" class="social-link">
+      <span class="social-icon">📝</span> Dev.to
+    </a>
+    <a href="https://hashnode.com/@techaiexplained" target="_blank" rel="noopener" class="social-link">
+      <span class="social-icon">✍️</span> Hashnode
+    </a>
+    <a href="https://www.youtube.com/channel/UCizqKpAji11NLg-JtDbbP9g" target="_blank" rel="noopener" class="social-link">
+      <span class="social-icon">🎬</span> YouTube
+    </a>
+    <a href="https://bsky.app/profile/techaiexplained.bsky.social" target="_blank" rel="noopener" class="social-link">
+      <span class="social-icon">🦋</span> Bluesky
+    </a>
+    <a href="https://jellybolt.itch.io" target="_blank" rel="noopener" class="social-link">
+      <span class="social-icon">🎮</span> Games
+    </a>
+    <a href="https://github.com/content-empire-pub" target="_blank" rel="noopener" class="social-link">
+      <span class="social-icon">💻</span> GitHub
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>⚡ <strong>Content Empire</strong> — Build. Publish. Dominate.</p>
+    <p>&copy; 2025 Content Empire. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Intersection Observer for fade-in animations
+  (function() {
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('.fade-in').forEach(function(el) { el.classList.add('visible'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+  })();
+</script>
+
+</body>
+</html>
