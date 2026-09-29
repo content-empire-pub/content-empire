@@ -6,7 +6,6 @@ Usage:
     python post-to-medium.py [--dry-run]
 
 Env vars required (ONE of these):
-    MEDIUM_SESSION_COOKIE  - Medium session cookie (sid=... value)
     MEDIUM_INTEGRATION_TOKEN - Legacy integration token (if still valid)
 
 Tracking file: scripts/medium-posted.json
@@ -41,8 +40,6 @@ ARTICLES_DIR = REPO_ROOT / "medium-ready"
 TRACKING_FILE = Path(__file__).resolve().parent / "medium-posted.json"
 EXPORT_DIR = REPO_ROOT / "medium-drafts-html"
 MEDIUM_API = "https://api.medium.com/v1"
-MEDIUM_INTERNAL_API = "https://medium.com/_/api"
-MEDIUM_USER_ID = "707207c087d9"  # Content Empire / TechAI Explained account
 
 
 def md_to_html(md_text: str) -> str:
@@ -159,37 +156,6 @@ def post_via_integration_token(token: str, title: str, html: str, tags: list[str
     return result["data"]["url"]
 
 
-def post_via_session_cookie(session_cookie: str, title: str, html: str, tags: list[str]) -> str:
-    """Post using session cookie (unofficial internal API)."""
-    import urllib.parse
-
-    # URL-decode the cookie if it's encoded
-    sid_value = urllib.parse.unquote(session_cookie)
-
-    headers = {
-        "Cookie": f"sid={urllib.parse.quote(sid_value, safe='')}; uid={MEDIUM_USER_ID}",
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        "X-Obvious-CID": "article-editor-v2",
-        "Referer": "https://medium.com/new-story",
-        "Origin": "https://medium.com",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-    }
-
-    payload = {
-        "title": title,
-        "contentFormat": "html",
-        "content": html,
-        "tags": [{"slug": t, "name": t} for t in tags[:5]],
-        "publishStatus": "draft",
-        "notifyFollowers": False,
-    }
-
-    url = f"{MEDIUM_INTERNAL_API}/users/{MEDIUM_USER_ID}/posts"
-    result = _make_request("POST", url, headers, payload)
-    return result.get("payload", {}).get("value", {}).get("url", "https://medium.com/me/stories/drafts")
-
-
 def load_tracking() -> dict:
     if TRACKING_FILE.exists():
         return json.loads(TRACKING_FILE.read_text())
@@ -210,20 +176,19 @@ def main():
     )
     args = parser.parse_args()
 
-    # Auth: prefer session cookie (integration tokens removed for new accounts)
-    session_cookie = os.environ.get("MEDIUM_SESSION_COOKIE", "").strip()
+    # Medium's internal cookie endpoint now returns 405/Cloudflare challenges.
+    # Only the supported legacy API is attempted; otherwise export HTML for manual posting.
     integration_token = os.environ.get("MEDIUM_INTEGRATION_TOKEN", "").strip()
+    session_cookie = os.environ.get("MEDIUM_SESSION_COOKIE", "").strip()
 
-    has_auth = bool(session_cookie or integration_token)
-    # Without credentials we still render HTML so the drafts can be pasted manually,
-    # rather than failing the scheduled pipeline every week.
-    export_only = not has_auth and not args.dry_run
+    export_only = not integration_token and not args.dry_run
     if export_only:
-        print("⚠  No MEDIUM_SESSION_COOKIE / MEDIUM_INTEGRATION_TOKEN set.")
-        print("   Falling back to HTML export only (no API calls).")
+        if session_cookie:
+            print("⚠  MEDIUM_SESSION_COOKIE is configured, but cookie publishing is no longer supported.")
+        else:
+            print("⚠  No MEDIUM_INTEGRATION_TOKEN set.")
+        print("   Falling back to HTML export only for manual Medium publishing.")
         args.export_html = True
-
-    use_cookie_auth = bool(session_cookie)
 
     if _MD_BACKEND is None:
         print("⚠  No markdown library found. Using minimal HTML fallback.")
@@ -239,8 +204,6 @@ def main():
     if not args.dry_run:
         if export_only:
             print("Auth: none (HTML export mode)")
-        elif use_cookie_auth:
-            print(f"Auth: session cookie (user ID: {MEDIUM_USER_ID})")
         else:
             print("Auth: integration token (legacy)")
 
@@ -296,10 +259,7 @@ def main():
         else:
             print("  Posting…")
             try:
-                if use_cookie_auth:
-                    url = post_via_session_cookie(session_cookie, title, html, tags)
-                else:
-                    url = post_via_integration_token(integration_token, title, html, tags)
+                url = post_via_integration_token(integration_token, title, html, tags)
                 tracking[key] = {"title": title, "url": url}
                 save_tracking(tracking)
                 print(f"  ✓ Draft created: {url}")

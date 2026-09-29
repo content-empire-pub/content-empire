@@ -7,11 +7,12 @@ Usage:
     python substack-newsletter.py [--dry-run]
 
 Env vars required:
-    SUBSTACK_SESSION_COOKIE     - substack.sid cookie value
-    SUBSTACK_PUBLICATION_URL    - e.g. https://contentempire.substack.com
+    SUBSTACK_SESSION_COOKIE     - substack.sid cookie value (optional)
+    SUBSTACK_PUBLICATION_URL    - e.g. https://contentempire.substack.com (optional)
 
 The script picks the 3–5 most-recently-modified articles and formats
-them into a digest, then POSTs a draft to Substack's unofficial API.
+them into a digest, then POSTs a draft to Substack's unofficial API when
+credentials are available. Otherwise it exports the HTML for manual posting.
 """
 
 import argparse
@@ -25,10 +26,15 @@ import urllib.parse
 from datetime import datetime, timezone
 from pathlib import Path
 
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, "reconfigure"):
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 ARTICLES_DIR = REPO_ROOT / "medium-ready"
 MAX_ARTICLES = 5
 MIN_ARTICLES = 3
+DEFAULT_PUBLICATION_URL = "https://content-empire-pub.github.io/content-empire/"
 
 
 # ---------------------------------------------------------------------------
@@ -185,15 +191,18 @@ def main():
     args = parser.parse_args()
 
     cookie = os.environ.get("SUBSTACK_SESSION_COOKIE", "")
-    pub_url = os.environ.get("SUBSTACK_PUBLICATION_URL", "")
+    configured_pub_url = os.environ.get("SUBSTACK_PUBLICATION_URL", "")
+    pub_url = configured_pub_url or DEFAULT_PUBLICATION_URL
+    export_only = not cookie or not configured_pub_url
 
-    if not args.dry_run:
+    if not args.dry_run and export_only:
+        missing = []
         if not cookie:
-            print("✗ SUBSTACK_SESSION_COOKIE not set.", file=sys.stderr)
-            sys.exit(1)
-        if not pub_url:
-            print("✗ SUBSTACK_PUBLICATION_URL not set.", file=sys.stderr)
-            sys.exit(1)
+            missing.append("SUBSTACK_SESSION_COOKIE")
+        if not configured_pub_url:
+            missing.append("SUBSTACK_PUBLICATION_URL")
+        print(f"⚠  {', '.join(missing)} not set.")
+        print("   Falling back to newsletter HTML export for manual Substack publishing.")
 
     article_paths = pick_articles(ARTICLES_DIR, MAX_ARTICLES)
     if len(article_paths) < MIN_ARTICLES:
@@ -229,6 +238,9 @@ def main():
         print(f"  title: {newsletter_title}")
         print("  body preview:")
         print(newsletter_html[:500])
+        return
+    if export_only:
+        print("\n[EXPORT ONLY] Skipping Substack API call (credentials unavailable).")
         return
 
     payload = {
