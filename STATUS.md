@@ -1,5 +1,40 @@
 # Content Empire — Project Status
-Last updated: 2026-07-28
+Last updated: 2026-10-14
+
+## Ralph Watch — 2026-10-14
+
+- Both repository copies are synchronized at `1d75996` before this status update.
+  There are no open pull requests; the primary repository has 25 open issues and
+  the organization repository has 1.
+- Recent scheduled Medium and newsletter runs are green on both repositories,
+  but **green CI is not evidence of publication**.
+- Medium: October 12 runs exported 10 HTML drafts and posted 0 articles.
+  Organization run `38298931504` retains artifact `11770151503` until October 26.
+  Automatic Medium publishing remains blocked; see primary issue #46.
+- Newsletter: the October 9 organization run `37978094544` exported HTML because
+  both Substack settings are missing. Artifact `11638879326` expires October 23.
+  The primary repository has the settings, but run `37978235766` received HTTP 403
+  (bot protection or expired session) and also retained a manual-publishing draft.
+- Netlify: organization run `37571023477` reported success while logging
+  `Netlify credentials not provided, not deployable`. Neither Netlify secret is
+  configured on the organization repository. The primary Netlify workflow is
+  manually disabled. Do not treat either as an independent hosting deployment.
+- Brand configuration is readable again. The organization token has admin access;
+  the primary token has push/triage access but not admin. Earlier permission
+  blockers are not evidence of the current access state. Publishing credentials
+  must still be provisioned or refreshed; they cannot be recovered from secret
+  names alone.
+- Live checks: the organization homepage, article listing, and About page return
+  HTTP 200. All five product links listed below also return HTTP 200; this checks
+  reachability, not checkout, ownership, or revenue. The two-store consolidation
+  decision remains unresolved.
+- Tracked follow-up: organization issue
+  `content-empire-pub/content-empire#1` and primary issues #30 and #46.
+
+עברית: אין בקשות משיכה פתוחות, והריצות האחרונות ירוקות, אך הן אינן מעידות על
+פרסום. Medium יצר עשר טיוטות ללא פרסום; הניוזלטר נשמר כטיוטה בגלל הגדרות חסרות
+בארגון וחסימת 403 במאגר הראשי. Netlify דיווח על הצלחה ללא פריסה בגלל פרטי גישה
+חסרים. האתר וקישורי המוצרים זמינים; נדרשים פרסום ידני או תיקון הגדרות הגישה.
 
 ## Brand Identity
 - **Name:** Content Empire
@@ -10,19 +45,30 @@ Last updated: 2026-07-28
 
 ## Content Produced
 
-### Articles — Medium-Ready (5)
+### Articles — Medium-Ready (10)
 Located in `medium-ready/`:
 - 01-building-ai-agent-teams.md
 - 02-mcp-servers-plugin-system.md
 - 03-playwright-beyond-testing.md
 - 04-content-empire-zero-employees.md
 - 05-hidden-cost-of-not-automating.md
+- developer-guide-technical-writing.md
+- docker-compose-all-you-need.md
+- github-actions-guide-2026.md
+- rust-vs-go-2026.md
+- saas-mvp-weekend-ai.md
 
-### Articles — Dev.to-Ready (3)
+### Articles — Dev.to-Ready (6 unique articles, 9 files)
 Located in `devto-ready/`:
 - 01-ai-agent-teams.md
 - 02-mcp-servers.md
 - 03-hidden-cost-not-automating.md
+- 04-5-prompt-patterns-every-developer-needs.md
+- 05-why-ai-agents-replace-scripts.md
+- 06-mcp-servers-the-missing-manual.md
+
+The first three also have `-devto.md` variants; do not publish both variants as
+separate articles.
 
 ### Articles — Site Posts (11)
 Located in `site/content/posts/`:
@@ -76,7 +122,7 @@ Located in `site/content/posts/`:
 - `deploy.yml` — Site deployment workflow (publishes `docs/` + root `index.html` landing page to GitHub Pages)
 - `post-medium.yml`, `substack-newsletter.yml`, `upload-youtube.yml`, `deploy-netlify.yml`
 
-## Live URLs (verified 2026-07-28)
+## Live URLs (verified 2026-10-14)
 - Site: https://content-empire-pub.github.io/content-empire/ — 200
 - Gumroad store: https://squadai.gumroad.com — 200
   - `/l/squad-mastery` ($14.99), `/l/ai-powered-dev` ($9.99), `/l/prompt-cheatsheet` ($4.99) — all 200
