@@ -1,5 +1,42 @@
 # Content Empire — Project Status
-Last updated: 2026-10-14
+Last updated: 2026-10-18
+
+## Ralph Watch — 2026-10-18
+
+- Both remote main branches and the clean checkout were synchronized at
+  `d240376` before this update. No open PRs; 25 open primary issues and
+  1 organization issue. Recent CI runs are green; no failed run needs a rerun.
+- Current API access is **read-only on both repositories**. Loading organization
+  brand variables returns HTTP 403. The October 14 admin/push access finding
+  is historical, not current. Configuration cannot currently be verified or
+  repaired through the available repository token.
+- October 16 newsletter runs still did not publish: organization run
+  `38941876609` exported HTML because both Substack settings are missing;
+  primary run `38942022228` received HTTP 403. Organization artifact
+  `12063167729` expires October 30.
+- Medium's latest scheduled organization run remains October 12,
+  `38298931504`: 0 posted, 10 drafts exported. Artifact `11770151503` expires
+  October 26. Automatic publishing remains blocked by primary issue #46.
+- Downloaded and verified all 10 Medium HTML drafts and the October 16 newsletter
+  HTML in this watch session's persistent `files/` directory, under
+  `medium-2026-10-12/` and `newsletter-2026-10-16/`. These local copies survive
+  Actions artifact expiration; they are not published content.
+- October 14 organization Netlify run `38523219469` again reported success
+  while logging `Netlify credentials not provided, not deployable`. Primary
+  Netlify remains manually disabled. Medium and newsletter workflows remain
+  active on both repositories; do not re-enable or rerun them unnecessarily.
+- Live homepage, `/posts/`, and `/pages/about/` all return HTTP 200.
+  Existing follow-up remains organization issue
+  `content-empire-pub/content-empire#1` and primary issues #30 and #46.
+- Remote updates are blocked: pushes to both repositories return HTTP 403,
+  and posting the watch report to organization issue #1 is denied by the
+  Enterprise Managed User policy. This status update is retained locally.
+
+עברית: אין בקשות משיכה פתוחות, שני המאגרים מסונכרנים והריצות האחרונות ירוקות.
+עם זאת, לא פורסם תוכן: Medium ייצא עשר טיוטות, והניוזלטר חסום בהגדרות חסרות
+או בשגיאת 403. הטיוטות הורדו ונשמרו בתיקיית העבודה של הסשן לפני תפוגתן.
+Netlify לא פרס למרות דיווח הצלחה. האתר זמין; ההרשאות הנוכחיות בשני המאגרים
+הן לקריאה בלבד, והגישה למשתני המותג חסומה.
 
 ## Ralph Watch — 2026-10-14
 
