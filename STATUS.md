@@ -1,5 +1,43 @@
 # Content Empire — Project Status
-Last updated: 2026-10-18
+Last updated: 2026-10-25
+
+## Ralph Watch — 2026-10-25
+
+- Checked both repositories: 25 open primary issues, 1 open organization issue,
+  and no open PRs. Recent CI runs are green; historical failures have successful
+  successors and do not need reruns.
+- Primary main and the clean checkout started at `0c75ec3`; organization main
+  was two documentation commits behind at `d240376`. Both copies have the same
+  publishing workflow code.
+- Brand variables are readable again. Current API permissions report organization
+  admin and primary push/triage access. The October 18 read-only finding is
+  historical, not the current access state.
+- October 19 Medium runs on both copies posted 0 articles and exported 10 HTML
+  drafts. Organization run `39288561362` retains artifact `12203423404` until
+  November 2. The primary session cookie is configured but unsupported; the
+  organization has no Medium publishing credential. Primary issue #46 remains
+  open for the external publishing blocker, not the already-shipped CI wiring.
+- October 23 newsletter organization run `39999713202` exported HTML because
+  both Substack settings are missing. Artifact `12521636968` expires November 6.
+  Primary run `39999888050` received HTTP 403 and retained a manual draft.
+- Downloaded and verified all 10 latest Medium HTML drafts and the latest
+  newsletter HTML in this session's persistent `files/` directory, under
+  `medium-2026-10-19/` and `newsletter-2026-10-23/`. These are preserved drafts,
+  not published content.
+- Organization Netlify still lacks both required secrets; its latest run
+  `38523219469` skipped deployment despite reporting success. Primary Netlify
+  remains manually disabled. No deployment or publishing rerun is warranted.
+- Pages homepage, `/posts/`, and `/pages/about/` return HTTP 200. Current
+  publishing/configuration blockers remain organization issue
+  `content-empire-pub/content-empire#1` and primary issues #30 and #46.
+- No credentials were changed, no external articles were published, and no
+  blocked tasks were closed.
+
+עברית: נבדקו שני המאגרים: אין בקשות משיכה פתוחות והריצות האחרונות ירוקות.
+ההרשאות חזרו לכתיבה ומשתני המותג נגישים. Medium ייצא עשר טיוטות ללא פרסום;
+הניוזלטר נשמר כטיוטה בגלל הגדרות חסרות בארגון ושגיאת 403 במאגר הראשי.
+הטיוטות העדכניות הורדו ונשמרו מקומית לפני תפוגתן. האתר זמין, אך Netlify
+עדיין לא פרס. לא שונו פרטי גישה ולא נסגרו משימות חסומות.
 
 ## Ralph Watch — 2026-10-18
 
