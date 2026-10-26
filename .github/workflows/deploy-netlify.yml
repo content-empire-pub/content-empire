@@ -9,6 +9,24 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Validate Netlify configuration
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          missing=0
+          for name in NETLIFY_AUTH_TOKEN NETLIFY_SITE_ID; do
+            if [[ -z "${!name}" ]]; then
+              echo "::error::Missing required repository secret: $name"
+              echo "- Missing required repository secret: \`$name\`" >> "$GITHUB_STEP_SUMMARY"
+              missing=1
+            fi
+          done
+          if [[ "$missing" -ne 0 ]]; then
+            echo "Netlify deployment blocked; no site was deployed." >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+
       - name: Checkout
         uses: actions/checkout@v7
 

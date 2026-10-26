@@ -1,5 +1,36 @@
 # Content Empire — Project Status
-Last updated: 2026-10-25
+Last updated: 2026-10-27
+
+## Ralph Watch — 2026-10-27
+
+- Checked both repositories: 25 open primary issues, 1 open organization issue,
+  and no open PRs. Both main branches and the clean checkout started at
+  `0c09ba4`. Recent CI runs were green; no historical retry was needed.
+- October 26 Medium runs posted 0 articles and exported 10 HTML drafts on each
+  repository. Organization run `40359911516` retains artifact `12666663873`
+  until November 9. Downloaded and verified all 10 nonempty drafts in this
+  session's persistent `files/medium-2026-10-26/` directory.
+- October 25 organization Netlify run `40196084588` again reported success
+  without deploying because both required secrets are absent. Added an early
+  configuration check to fail explicitly with missing secret names and a job
+  summary, before building or invoking the deployment action. Configure
+  `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID` before retrying; this change does
+  not provision hosting or claim a successful deployment.
+- Primary Netlify remains manually disabled. Medium and newsletter workflows
+  remain active on both copies. Latest newsletter evidence is still October 23:
+  missing organization Substack settings and HTTP 403 on the primary copy.
+- Brand variables are readable; current permissions are organization admin
+  and primary push/triage. No credentials were disclosed or changed.
+- Pages homepage, `/posts/`, and `/pages/about/` return HTTP 200. Publishing
+  blockers remain organization issue `content-empire-pub/content-empire#1`
+  and primary issues #30 and #46. No external articles were published and
+  no blocked tasks were closed.
+
+עברית: נבדקו שני המאגרים: אין בקשות משיכה פתוחות והריצות האחרונות היו ירוקות.
+ריצות Medium מ-26 באוקטובר ייצאו עשר טיוטות ללא פרסום; כולן הורדו ואומתו.
+Netlify שוב דיווח על הצלחה ללא פריסה. נוספה בדיקה מוקדמת שמכשילה את הריצה
+במפורש כשפרטי הגישה חסרים, בלי לחשוף ערכים. האתר זמין, אך חסמי הפרסום
+והגדרות השירותים נותרו פתוחים. לא שונו פרטי גישה ולא פורסמו מאמרים.
 
 ## Ralph Watch — 2026-10-25
 
