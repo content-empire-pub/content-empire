@@ -1,5 +1,41 @@
 # Content Empire — Project Status
-Last updated: 2026-10-27
+Last updated: 2026-11-01
+
+## Ralph Watch — 2026-11-01
+
+- Checked both repositories: 25 open primary issues, 1 open organization issue,
+  and no open PRs. Both main branches and the clean checkout started at
+  `cf9c521`. Pages CI is green and the homepage, `/posts/`, and `/pages/about/`
+  return HTTP 200.
+- Organization Netlify run `40409758367` now fails explicitly at configuration
+  validation, as intended by the previous fix. Both `NETLIFY_AUTH_TOKEN` and
+  `NETLIFY_SITE_ID` are absent; checkout, build, and deployment were skipped.
+  This is an unresolved configuration blocker, not a workflow regression.
+  No rerun was requested. Primary Netlify remains manually disabled.
+- October 30 newsletters did not publish despite green CI. Organization run
+  `41110917713` exported HTML because both Substack settings are missing;
+  artifact `13001839676` expires November 13. Primary run `41110990749`
+  received HTTP 403 and retained artifact `13002114990`.
+- Latest Medium runs remain October 26. Organization run `40359911516`
+  posted 0 articles and exported 10 HTML drafts; artifact `12666663873`
+  expires November 9. Automatic publishing remains blocked by primary #46.
+- Downloaded both October 30 newsletter drafts and all 10 October 26 Medium
+  drafts into this watch session's persistent `files/` directory, under
+  `newsletter-2026-10-30/`, `newsletter-primary-2026-10-30/`, and
+  `medium-2026-10-26/`. Verified nonempty HTML content; these are preserved
+  drafts, not published content.
+- Brand variables are readable; organization admin and primary push/triage
+  permissions remain available. No credentials were exposed or changed.
+  Publishing/configuration follow-up remains organization issue
+  `content-empire-pub/content-empire#1` and primary issues #30 and #46.
+  No blocked tasks were closed.
+
+עברית: נבדקו שני המאגרים: אין בקשות משיכה פתוחות והאתר זמין.
+Netlify נכשל כעת במפורש בגלל שני סודות חסרים, בהתאם לתיקון הקודם;
+לא בוצעה פריסה ולא הופעלה ריצה חוזרת. ריצות הניוזלטר מ-30 באוקטובר
+לא פרסמו תוכן: בארגון חסרות הגדרות ובמאגר הראשי התקבלה שגיאת 403.
+שתי טיוטות הניוזלטר ועשר טיוטות Medium הורדו ואומתו ונשמרו בתיקיית הסשן.
+חסמי הפרסום נותרו פתוחים; לא שונו פרטי גישה ולא נסגרו משימות חסומות.
 
 ## Ralph Watch — 2026-10-27
 
