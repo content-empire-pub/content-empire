@@ -1,5 +1,39 @@
 # Content Empire — Project Status
-Last updated: 2026-11-01
+Last updated: 2026-11-05
+
+## Ralph Watch — 2026-11-05
+
+- Checked both repositories: 25 open primary issues, 1 open organization issue,
+  and no open PRs. Both main branches and the clean checkout started at
+  `3ac31dc`. Latest Pages deployments are successful; the homepage, `/posts/`,
+  and `/pages/about/` return HTTP 200.
+- Organization Netlify run `41279201637` fails at configuration validation:
+  `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID` are still absent. This is the
+  existing configuration blocker, not a build regression. Primary Netlify
+  remains manually disabled; no ineffective rerun was requested.
+- November 2 Medium runs `41514894114` (organization) and `41513919844`
+  (primary) each posted 0 articles and exported 10 HTML drafts. Organization
+  artifact `13174243020` expires November 16. Automatic publication remains
+  blocked by primary #46; successful export is not successful publication.
+- Latest newsletters remain October 30: organization run `41110917713`
+  exports only because Substack settings are missing; primary run
+  `41110990749` receives HTTP 403 and saves a manual draft. Their artifacts
+  `13001839676` and `13002114990` expire November 13.
+- Downloaded and verified all 10 November 2 Medium drafts and both October 30
+  newsletter drafts in this watch session's persistent `files/` directory:
+  `medium-2026-11-02/`, `newsletter-2026-10-30/`, and
+  `newsletter-primary-2026-10-30/`. These are preserved drafts, not publications.
+- Brand configuration is readable; organization admin and primary push/triage
+  access are available. No credentials were exposed or changed. Existing
+  follow-up remains organization issue `content-empire-pub/content-empire#1`
+  and primary issues #30 and #46. No blocked tasks were closed.
+
+עברית: נבדקו המשימות, בקשות המשיכה ו-CI בשני המאגרים. אין בקשות משיכה
+פתוחות והאתר זמין. Netlify עדיין חסום בגלל שני סודות חסרים; לא הופעלה
+ריצה חוזרת ללא תיקון ההגדרות. ריצות Medium מ-2 בנובמבר ייצאו עשר טיוטות
+ללא פרסום. הניוזלטר מ-30 באוקטובר חסום בהגדרות חסרות או בשגיאת 403.
+עשר טיוטות Medium ושתי טיוטות ניוזלטר הורדו, אומתו ונשמרו בתיקיית הסשן
+לפני תפוגתן. לא שונו פרטי גישה ולא נסגרו משימות חסומות.
 
 ## Ralph Watch — 2026-11-01
 
